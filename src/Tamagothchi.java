@@ -22,7 +22,6 @@ public class Tamagothchi {
         if (hunger >= 10 || boredom >= 10){
             isAlice = false;
         }
-
     }
 
     private void reduceBoredom() {
