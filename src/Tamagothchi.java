@@ -15,51 +15,67 @@ public class Tamagothchi {
         name = incomingName;
     }
 
-    public void tick(){
+    public void tick() {
         hunger += 1;
         boredom += 1;
 
+        if (hunger >= 10 || boredom >= 10){
+            isAlice = false;
+        }
+
     }
 
-    public void feed(){
-        hunger -= 1;
-        if (hunger < 0){
-            hunger = 1;
+    private void reduceBoredom() {
+        boredom -= 1;
+        if (boredom < 0) {
+            boredom = 0;
         }
     }
 
-    public void speak(){
-        if (words.isEmpty()){
+    public void feed() {
+        int reducedHunger = 1;
+        hunger -= reducedHunger;
+        if (hunger < 0) {
+            hunger = reducedHunger;
+        }
+        System.out.println();
+        System.out.println("Hunger reduced by " + reducedHunger);
+    }
+
+    public void speak() {
+        if (words.isEmpty()) {
             System.out.println("No words known...");
-        }
-        else{
+        } else {
             System.out.println(words.get(generator.nextInt(words.size())));
         }
         reduceBoredom();
     }
 
+    public void teach(String word) {
 
-    public void teach(String word){
         words.add(word);
         reduceBoredom();
     }
 
-    public void printStats(){
-        System.out.println(name + "s Stats:");
+    public void printStats() {
+        System.out.println(name + "'s current stats:");
         System.out.println("Hunger: " + hunger);
         System.out.println("Boredom: " + boredom);
 
     }
 
-    public boolean getAlive(){
+    public boolean getAlive() {
         return isAlice;
     }
 
-    private void reduceBoredom(){
-        boredom -= 1;
-        if (boredom<0){
-            boredom = 0;
-        }
+    public int getHunger() {
+        return hunger;
     }
+
+    public int getBoredom() {
+        return boredom;
+    }
+
 }
+
 
