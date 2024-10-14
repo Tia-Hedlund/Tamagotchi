@@ -32,10 +32,7 @@ public class Main {
                     tamagothchi1.feed();
                     break;
                 case "2":
-                    //System.out.println("Ange ord att lära Tamagotchi: ");
-                    //String word = myScanner.nextLine();
-                    // Tamagothchi1.teach(word);
-                    // tamagothchi1.teach();
+                    tamagothchi1.teach();
                     break;
                 case "3":
                     tamagothchi1.speak();

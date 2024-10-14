@@ -1,14 +1,16 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Tamagothchi {
 
     private int hunger = 0;
     private int boredom = 0;
     private boolean isAlice = true;
-    private ArrayList<String> words;
+    private ArrayList<String> words = new ArrayList<>();
     private Random generator = new Random();
     public String name;
+    Scanner myScanner = new Scanner(System.in);
 
     // constructor
     public Tamagothchi(String incomingName) {
@@ -42,16 +44,19 @@ public class Tamagothchi {
     }
 
     public void speak() {
+        System.out.println();
         if (words.isEmpty()) {
             System.out.println("No words known...");
         } else {
+            System.out.print(name + " says: ");
             System.out.println(words.get(generator.nextInt(words.size())));
         }
         reduceBoredom();
     }
 
-    public void teach(String word) {
-
+    public void teach() {
+        System.out.print("Ange ord att lära Tamagotchi: ");
+        String word = myScanner.next();
         words.add(word);
         reduceBoredom();
     }
